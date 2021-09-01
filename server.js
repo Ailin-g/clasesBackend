@@ -5,7 +5,7 @@ const productosRoute = require('./rutas/productosRoute');
 
 const app = express();
 const puerto = 8080;
-
+//handlebars
 app.engine(
     'hbs', 
     handlebars({
@@ -25,7 +25,8 @@ app.set('views', './viewsPug');
 app.set('view engine', 'pug');
 
 //ejs
-app.set('views', '')
+app.set('views', './viewsEjs');
+app.set('view engine', 'ejs');
 
 const server = app.listen(puerto, (err) => {
     if(err) throw new Error(`Error en servidor ${err}`);
