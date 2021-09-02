@@ -20,13 +20,13 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 app.use(express.static("public"))
 
-//pug
-app.set('views', './viewsPug');
-app.set('view engine', 'pug');
+// //pug
+// app.set('views', './viewsPug');
+// app.set('view engine', 'pug');
 
-//ejs
-app.set('views', './viewsEjs');
-app.set('view engine', 'ejs');
+// //ejs
+// app.set('views', './viewsEjs');
+// app.set('view engine', 'ejs');
 
 const server = app.listen(puerto, (err) => {
     if(err) throw new Error(`Error en servidor ${err}`);
