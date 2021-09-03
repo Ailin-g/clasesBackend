@@ -1,9 +1,12 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
 
+const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);  
+
 const productosRoute = require('./rutas/productosRoute');
 
-const app = express();
 const puerto = 8080;
 //handlebars
 app.engine(
@@ -28,9 +31,16 @@ app.use(express.static("public"))
 // app.set('views', './viewsEjs');
 // app.set('view engine', 'ejs');
 
-const server = app.listen(puerto, (err) => {
+http.listen(puerto, (err) => {
     if(err) throw new Error(`Error en servidor ${err}`);
     console.log("Servidor inicializado en " + puerto);
 });
+
+
+
+io.on('connection', (socket) => {
+    console.log("usuario conectado");
+})
+
 
 app.use('/api/productos', productosRoute);
